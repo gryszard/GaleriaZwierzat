@@ -134,7 +134,7 @@ public partial class Gallery : Form
         var button = (Button)sender;
         var id = (int)button.Tag;
 
-        var dialogResult = MessageBox.Show("Delete: " + id, "Caption", MessageBoxButtons.YesNo);
+        var dialogResult = MessageBox.Show("Czy jesteś pewny?", "Czy usunąć?", MessageBoxButtons.YesNo);
         if (dialogResult != DialogResult.Yes)
         {
             return;
