@@ -45,20 +45,22 @@ partial class Gallery
         // 
         // tableLayoutPanel1
         // 
+        tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
         tableLayoutPanel1.AutoScroll = true;
+        tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
         tableLayoutPanel1.ColumnCount = 2;
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
         tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-        tableLayoutPanel1.Location = new Point(12, 12);
+        tableLayoutPanel1.Location = new Point(5, 5);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
         tableLayoutPanel1.RowCount = 1;
         tableLayoutPanel1.RowStyles.Add(new RowStyle());
-        tableLayoutPanel1.Size = new Size(426, 426);
+        tableLayoutPanel1.Size = new Size(467, 439);
         tableLayoutPanel1.TabIndex = 0;
         // 
         // buttonAddPicture
         // 
-        buttonAddPicture.Location = new Point(515, 36);
+        buttonAddPicture.Location = new Point(485, 12);
         buttonAddPicture.Name = "buttonAddPicture";
         buttonAddPicture.Size = new Size(136, 29);
         buttonAddPicture.TabIndex = 1;
@@ -73,9 +75,9 @@ partial class Gallery
         panelPicture.Controls.Add(buttonCancelPicture);
         panelPicture.Controls.Add(buttonUploadPicture);
         panelPicture.Controls.Add(buttonAddTitle);
-        panelPicture.Location = new Point(459, 116);
+        panelPicture.Location = new Point(485, 47);
         panelPicture.Name = "panelPicture";
-        panelPicture.Size = new Size(250, 297);
+        panelPicture.Size = new Size(181, 183);
         panelPicture.TabIndex = 2;
         panelPicture.Visible = false;
         // 
@@ -84,22 +86,22 @@ partial class Gallery
         panelTitle.Controls.Add(textBoxTitle);
         panelTitle.Controls.Add(buttonCancelTitle);
         panelTitle.Controls.Add(buttonSaveTitle);
-        panelTitle.Location = new Point(30, 66);
+        panelTitle.Location = new Point(3, 38);
         panelTitle.Name = "panelTitle";
-        panelTitle.Size = new Size(197, 113);
+        panelTitle.Size = new Size(173, 69);
         panelTitle.TabIndex = 4;
         panelTitle.Visible = false;
         // 
         // textBoxTitle
         // 
-        textBoxTitle.Location = new Point(26, 16);
+        textBoxTitle.Location = new Point(3, 3);
         textBoxTitle.Name = "textBoxTitle";
-        textBoxTitle.Size = new Size(125, 27);
+        textBoxTitle.Size = new Size(166, 27);
         textBoxTitle.TabIndex = 4;
         // 
         // buttonCancelTitle
         // 
-        buttonCancelTitle.Location = new Point(100, 68);
+        buttonCancelTitle.Location = new Point(88, 36);
         buttonCancelTitle.Name = "buttonCancelTitle";
         buttonCancelTitle.Size = new Size(81, 29);
         buttonCancelTitle.TabIndex = 3;
@@ -109,7 +111,7 @@ partial class Gallery
         // 
         // buttonSaveTitle
         // 
-        buttonSaveTitle.Location = new Point(15, 68);
+        buttonSaveTitle.Location = new Point(3, 36);
         buttonSaveTitle.Name = "buttonSaveTitle";
         buttonSaveTitle.Size = new Size(79, 29);
         buttonSaveTitle.TabIndex = 3;
@@ -119,7 +121,7 @@ partial class Gallery
         // 
         // buttonSavePicture
         // 
-        buttonSavePicture.Location = new Point(21, 250);
+        buttonSavePicture.Location = new Point(6, 148);
         buttonSavePicture.Name = "buttonSavePicture";
         buttonSavePicture.Size = new Size(79, 29);
         buttonSavePicture.TabIndex = 3;
@@ -129,9 +131,9 @@ partial class Gallery
         // 
         // buttonCancelPicture
         // 
-        buttonCancelPicture.Location = new Point(130, 250);
+        buttonCancelPicture.Location = new Point(91, 148);
         buttonCancelPicture.Name = "buttonCancelPicture";
-        buttonCancelPicture.Size = new Size(97, 29);
+        buttonCancelPicture.Size = new Size(85, 29);
         buttonCancelPicture.TabIndex = 3;
         buttonCancelPicture.Text = "anuluj";
         buttonCancelPicture.UseVisualStyleBackColor = true;
@@ -139,9 +141,9 @@ partial class Gallery
         // 
         // buttonUploadPicture
         // 
-        buttonUploadPicture.Location = new Point(56, 201);
+        buttonUploadPicture.Location = new Point(3, 113);
         buttonUploadPicture.Name = "buttonUploadPicture";
-        buttonUploadPicture.Size = new Size(136, 29);
+        buttonUploadPicture.Size = new Size(173, 29);
         buttonUploadPicture.TabIndex = 3;
         buttonUploadPicture.Text = "wgraj zdjęcie";
         buttonUploadPicture.UseVisualStyleBackColor = true;
@@ -149,7 +151,7 @@ partial class Gallery
         // 
         // buttonAddTitle
         // 
-        buttonAddTitle.Location = new Point(53, 19);
+        buttonAddTitle.Location = new Point(3, 3);
         buttonAddTitle.Name = "buttonAddTitle";
         buttonAddTitle.Size = new Size(136, 29);
         buttonAddTitle.TabIndex = 3;

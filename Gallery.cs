@@ -55,6 +55,11 @@ public partial class Gallery : Form
     public Gallery()
     {
         InitializeComponent();
+
+        var minimumWidth = panelPicture.Location.X + panelPicture.Size.Width + 100;
+        var minimumHeight = panelPicture.Location.Y + panelPicture.Size.Height + 100;
+        MinimumSize = new Size(minimumWidth, minimumHeight);
+
         Pictures = GetPictures();
         DisplayPictures();
     }
