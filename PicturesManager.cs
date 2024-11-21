@@ -16,7 +16,7 @@ internal static class PicturesManager
     {
         pictureToSave!.PictureBase64 = picture.PictureBase64;
 
-        using var connection = new SqliteConnection("Data Source=C:\\Users\\Richard\\source\\repos\\GaleriaZwierzat\\db.db");
+        using var connection = new SqliteConnection("Data Source=db.db");
         connection.Open();
 
         var command = connection.CreateCommand();
@@ -28,7 +28,7 @@ internal static class PicturesManager
 
     public static void DeletePictureFromDb(int id)
     {
-        using var connection = new SqliteConnection("Data Source=C:\\Users\\Richard\\source\\repos\\GaleriaZwierzat\\db.db");
+        using var connection = new SqliteConnection("Data Source=db.db");
         connection.Open();
 
         var command = connection.CreateCommand();
@@ -39,7 +39,7 @@ internal static class PicturesManager
 
     public static List<Picture> GetPicturesFromDb()
     {
-        using var connection = new SqliteConnection("Data Source=C:\\Users\\Richard\\source\\repos\\GaleriaZwierzat\\db.db");
+        using var connection = new SqliteConnection("Data Source=db.db");
         connection.Open();
 
         var command = connection.CreateCommand();
