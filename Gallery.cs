@@ -1,32 +1,143 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GaleriaZwierzat;
 
-namespace GaleriaZwierzat;
-
-internal class Gallery
+public partial class Gallery : Form
 {
     private List<Picture> Pictures;
 
-    public List<Picture> GetPictures()
+    public static List<Picture> GetPictures()
     {
-        throw new NotImplementedException();
+        return PicturesManager.GetPicturesFromDb();
     }
 
     public void DeletePicture(int id)
     {
-        throw new NotImplementedException();
+        PicturesManager.DeletePictureFromDb(id);
     }
 
     public void AddPicture(Picture picture)
     {
-        throw new NotImplementedException();
+        PicturesManager.AddTitle(picture.Title);
+        PicturesManager.SavePictureToDb(picture);
     }
 
     public void DisplayPictures()
     {
-        throw new NotImplementedException();
+        tableLayoutPanel1.Controls.Clear();
+
+        for (var i = 0; i < Pictures.Count; i++)
+        {
+            var imageBytes = Convert.FromBase64String(Pictures[i].PictureBase64);
+            using MemoryStream ms = new(imageBytes);
+            var image = Image.FromStream(ms);
+            var pictureBox = new PictureBox
+            {
+                Image = image,
+                Size = new Size(image.Width, image.Height)
+            };
+            var button = new Button
+            {
+                Size = new Size(125, 29),
+                Text = "usuń zdjęcie",
+                Tag = Pictures[i].Id
+            };
+
+            button.Click += buttonDeletePicture_Click;
+
+            tableLayoutPanel1.Controls.Add(pictureBox, 0, i);
+            tableLayoutPanel1.Controls.Add(button, 1, i);
+        }
     }
+
+    #region Helpers
+
+    private Picture pictureToAdd = new();
+
+    public Gallery()
+    {
+        InitializeComponent();
+        Pictures = GetPictures();
+        DisplayPictures();
+    }
+
+    private void buttonAddPicture_Click(object sender, EventArgs e)
+    {
+        panelPicture.Visible = true;
+    }
+
+    private void buttonAddTitle_Click(object sender, EventArgs e)
+    {
+        panelTitle.Visible = true;
+    }
+
+    private void buttonCancelTitle_Click(object sender, EventArgs e)
+    {
+        panelTitle.Visible = false;
+    }
+
+    private void buttonCancelPicture_Click(object sender, EventArgs e)
+    {
+        panelPicture.Visible = false;
+        panelTitle.Visible = false;
+    }
+
+    private void buttonSaveTitle_Click(object sender, EventArgs e)
+    {
+        var title = textBoxTitle.Text;
+
+        if (string.IsNullOrWhiteSpace(title) || title.Length > 200)
+        {
+            pictureToAdd.Title = null;
+            return;
+        }
+
+        pictureToAdd.Title = title;
+        panelTitle.Visible = false;
+    }
+
+    private void buttonUploadPicture_Click(object sender, EventArgs e)
+    {
+        var fileDialog = new OpenFileDialog();
+        fileDialog.Filter = "Images|*.jpg;*.png";
+        var dialogResult = fileDialog.ShowDialog(this);
+
+        if (dialogResult != DialogResult.OK)
+        {
+            return;
+        }
+
+        var bytes = File.ReadAllBytes(fileDialog.FileName);
+        pictureToAdd.PictureBase64 = Convert.ToBase64String(bytes);
+    }
+
+    private void buttonSavePicture_Click(object sender, EventArgs e)
+    {
+        if (pictureToAdd.Title == null || pictureToAdd.PictureBase64 == null)
+        {
+            return;
+        }
+
+        AddPicture(pictureToAdd);
+        pictureToAdd = new();
+
+        Pictures = GetPictures();
+        DisplayPictures();
+    }
+
+    private void buttonDeletePicture_Click(object sender, EventArgs e)
+    {
+        var button = (Button)sender;
+        var id = (int)button.Tag;
+
+        var dialogResult = MessageBox.Show("Delete: " + id, "Caption", MessageBoxButtons.YesNo);
+        if (dialogResult != DialogResult.Yes)
+        {
+            return;
+        }
+
+        DeletePicture(id);
+        Pictures = GetPictures();
+        DisplayPictures();
+    }
+
+    #endregion Helpers
 }

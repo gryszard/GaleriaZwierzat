@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GaleriaZwierzat;
 
-namespace GaleriaZwierzat;
-
-internal class Picture
+public class Picture
 {
+    public int Id { get; set; }
     public string? Title { get; set; }
     public string? PictureBase64 { get; set; }
 }
