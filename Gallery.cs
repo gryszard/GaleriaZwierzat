@@ -29,10 +29,11 @@ public partial class Gallery : Form
             var imageBytes = Convert.FromBase64String(Pictures[i].PictureBase64);
             using MemoryStream ms = new(imageBytes);
             var image = Image.FromStream(ms);
+            var resizedImage = (Image)new Bitmap(image, GetScaledSize(image));
             var pictureBox = new PictureBox
             {
-                Image = image,
-                Size = new Size(image.Width, image.Height)
+                Image = resizedImage,
+                Size = new Size(resizedImage.Width, resizedImage.Height)
             };
             var button = new Button
             {
@@ -142,6 +143,15 @@ public partial class Gallery : Form
         DeletePicture(id);
         Pictures = GetPictures();
         DisplayPictures();
+    }
+
+    private static Size GetScaledSize(Image image)
+    {
+        var newWidth = 300;
+        var proportion = (double)image.Height / image.Width;
+        var newHeight = (int)(newWidth * proportion);
+
+        return new Size(newWidth, newHeight);
     }
 
     #endregion Helpers

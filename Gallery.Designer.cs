@@ -49,8 +49,8 @@ partial class Gallery
         tableLayoutPanel1.AutoScroll = true;
         tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
         tableLayoutPanel1.ColumnCount = 2;
-        tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-        tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+        tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+        tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
         tableLayoutPanel1.Location = new Point(5, 5);
         tableLayoutPanel1.Name = "tableLayoutPanel1";
         tableLayoutPanel1.RowCount = 1;
