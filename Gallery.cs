@@ -1,4 +1,6 @@
-﻿namespace GaleriaZwierzat;
+﻿using Microsoft.Data.Sqlite;
+
+namespace GaleriaZwierzat;
 
 public partial class Gallery : Form
 {
@@ -6,7 +8,15 @@ public partial class Gallery : Form
 
     public static List<Picture> GetPictures()
     {
-        return PicturesManager.GetPicturesFromDb();
+        try
+        {
+            return PicturesManager.GetPicturesFromDb();
+        }
+        catch (SqliteException)
+        {
+            MessageBox.Show("Nie udało się otworzyć bazy danych. Zamykam program.");
+            throw;
+        }
     }
 
     public void DeletePicture(int id)
