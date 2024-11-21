@@ -70,6 +70,7 @@ partial class Gallery
         // 
         // panelPicture
         // 
+        panelPicture.BorderStyle = BorderStyle.Fixed3D;
         panelPicture.Controls.Add(panelTitle);
         panelPicture.Controls.Add(buttonSavePicture);
         panelPicture.Controls.Add(buttonCancelPicture);
@@ -77,18 +78,19 @@ partial class Gallery
         panelPicture.Controls.Add(buttonAddTitle);
         panelPicture.Location = new Point(485, 47);
         panelPicture.Name = "panelPicture";
-        panelPicture.Size = new Size(181, 183);
+        panelPicture.Size = new Size(189, 188);
         panelPicture.TabIndex = 2;
         panelPicture.Visible = false;
         // 
         // panelTitle
         // 
+        panelTitle.BorderStyle = BorderStyle.Fixed3D;
         panelTitle.Controls.Add(textBoxTitle);
         panelTitle.Controls.Add(buttonCancelTitle);
         panelTitle.Controls.Add(buttonSaveTitle);
         panelTitle.Location = new Point(3, 38);
         panelTitle.Name = "panelTitle";
-        panelTitle.Size = new Size(173, 69);
+        panelTitle.Size = new Size(179, 69);
         panelTitle.TabIndex = 4;
         panelTitle.Visible = false;
         // 
